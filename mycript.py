@@ -1,4 +1,4 @@
-from Cryptodome.PublicKey import ECC
+from Crypto.PublicKey import ECC
 
 a = ECC.generate(curve="P-256")
 print(a)

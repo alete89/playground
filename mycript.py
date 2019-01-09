@@ -38,5 +38,5 @@ alice_priv = generateNewKey()
 # exportKeyToFile(alice_public, "alice_public.pem")
 # exportKeyToFile(bob_public, "bob_public.pem")
 
-exportKeyToFileEncrypted(alice_priv, "alice_encrypted_private.pem","alete89")
-alice_importada = importKeyFromFile("alice_encrypted_private.pem", "alete89")
+exportKeyToFileEncrypted(alice_priv, "alice_encrypted_private.pem","asd123")
+alice_importada = importKeyFromFile("alice_encrypted_private.pem", "asd123")

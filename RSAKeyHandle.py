@@ -15,4 +15,15 @@ def exportKeyToFile(encryptedKey, path):
         file.write(encryptedKey)
 
 
-exportKeyToFile(encryptRsaKey(unaKey, "asd"), "encryptedKey.bin")
+def importKeyFromFile(path, password):
+    encoded_key = open(path, "rb").read()
+    return RSA.import_key(encoded_key, password)
+
+
+def main():
+    exportKeyToFile(encryptRsaKey(unaKey, "asd"), "encryptedKey.bin")
+    print(importKeyFromFile("encryptedKey.bin", "asd").publickey().export_key())
+
+
+if __name__ == "__main__":
+    main()

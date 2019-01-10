@@ -21,5 +21,10 @@ def decryptBytesWithAes(filename, key):
     return data
 
 
-encryptBytesWithAes(unaData, unaKey, unArchivo)
-print(decryptBytesWithAes(unArchivo, unaKey))
+def main():
+    encryptBytesWithAes(unaData, unaKey, unArchivo)
+    print(decryptBytesWithAes(unArchivo, unaKey))
+
+
+if __name__ == "__main__":
+    main()

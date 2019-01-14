@@ -5,7 +5,9 @@ from Crypto.Cipher import AES, PKCS1_OAEP
 import AesPlayground
 
 unTexto = "Un mensaje de ejemplo.".encode("utf-8")
-#unaKey = RSA.generate(1024)
+
+def getKeyPair(size:int):
+    return RSA.generate(size)
 
 
 def encryptRsaKey(RsaKey, password=None):
@@ -61,7 +63,10 @@ def main():
     # sender:
     # exampleSender()
     # receiver:
-    exampleReceiver()
+    # exampleReceiver()
+    asd = getKeyPair(1024)
+    pub = asd.publickey()
+    print(pub)
 
 
 if __name__ == "__main__":

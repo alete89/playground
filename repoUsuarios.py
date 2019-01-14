@@ -18,6 +18,12 @@ def agregarUsuarios(usuarios):
 def getPubKeyFromUsername(username):
     return [user.pubkey for user in listaDeUsuarios if user.username == username][0]
 
+def getUsernameList():
+    return [user.username for user in listaDeUsuarios]
+
+def filterByUsername(string):
+    return [user.username for user in listaDeUsuarios if string in user.username]
+
 
 def main():
     usuarios =[
@@ -28,7 +34,8 @@ def main():
         Usuario("bob", b"PUBBOB")
     ]
     agregarUsuarios(usuarios)
-    print(getPubKeyFromUsername("alice"))
+    #print(getPubKeyFromUsername("alice"))
+    print(filterByUsername("al"))
 
 
 if __name__ == "__main__":

@@ -20,10 +20,15 @@ def getPubKeyFromUsername(username):
 
 
 def main():
-    ale = Usuario("ale", b"ALETE")
-    otro = Usuario("otro", b"OTRINIO")
-    agregarUsuarios([ale, otro])
-    print(getPubKeyFromUsername("ale"))
+    usuarios =[
+        Usuario("ale", b"PUBALE"),
+        Usuario("pedro", b"PUBPEDRO"),
+        Usuario("carlos", b"PUBCARLOS"),
+        Usuario("alice", b"PUBALICE"),
+        Usuario("bob", b"PUBBOB")
+    ]
+    agregarUsuarios(usuarios)
+    print(getPubKeyFromUsername("alice"))
 
 
 if __name__ == "__main__":

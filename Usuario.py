@@ -1,4 +1,7 @@
 class Usuario:
-    def __init__(self, username: str, pubkey):
+    def __init__(self, username: str, key):
         self.username = username
-        self.pubkey = pubkey
+        self.key = key
+
+    def getPubkey(self):
+        return self.key.publickey()

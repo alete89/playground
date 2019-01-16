@@ -25,6 +25,12 @@ def decryptBytesWithAesFromFile(filename, key):
     data = cipher.decrypt_and_verify(ciphertext, tag)
     return data
 
+def decryptBytesWithAes(nonce_tag_ciphertext, key):
+    nonce, tag, ciphertext = nonce_tag_ciphertext
+    cipher = AES.new(key, AES.MODE_EAX, nonce)
+    data = cipher.decrypt_and_verify(ciphertext, tag)
+    return data
+
 
 def main():
     encryptBytesWithAesToFile(unaData, unaKey, unArchivo)

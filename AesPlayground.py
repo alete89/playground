@@ -18,7 +18,7 @@ def encryptBytesWithAes(data, key):
     return (cipher.nonce, tag, ciphertext)
 
 
-def decryptBytesWithAes(filename, key):
+def decryptBytesWithAesFromFile(filename, key):
     file_in = open(filename, "rb")
     nonce, tag, ciphertext = [file_in.read(x) for x in (16, 16, -1)]
     cipher = AES.new(key, AES.MODE_EAX, nonce)
@@ -28,7 +28,7 @@ def decryptBytesWithAes(filename, key):
 
 def main():
     encryptBytesWithAesToFile(unaData, unaKey, unArchivo)
-    print(decryptBytesWithAes(unArchivo, unaKey))
+    print(decryptBytesWithAesFromFile(unArchivo, unaKey))
 
 
 if __name__ == "__main__":

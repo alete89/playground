@@ -6,13 +6,13 @@ unArchivo = "conAes.bin"
 unaKey = get_random_bytes(24)  # 16, 24 o 32
 
 
-def encryptBytesWithAesToFile(data, key, filename):
+def encryptBytesWithAesToFile(data:bytes, key, filename):
     cipher = AES.new(key, AES.MODE_EAX)
     ciphertext, tag = cipher.encrypt_and_digest(data)
     file_out = open(filename, "wb")
     [file_out.write(x) for x in (cipher.nonce, tag, ciphertext)]
 
-def encryptBytesWithAes(data, key):
+def encryptBytesWithAes(data:bytes, key):
     cipher = AES.new(key, AES.MODE_EAX)
     ciphertext, tag = cipher.encrypt_and_digest(data)
     return (cipher.nonce, tag, ciphertext)

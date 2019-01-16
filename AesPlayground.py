@@ -12,6 +12,11 @@ def encryptBytesWithAesToFile(data, key, filename):
     file_out = open(filename, "wb")
     [file_out.write(x) for x in (cipher.nonce, tag, ciphertext)]
 
+def encryptBytesWithAes(data, key):
+    cipher = AES.new(key, AES.MODE_EAX)
+    ciphertext, tag = cipher.encrypt_and_digest(data)
+    return (cipher.nonce, tag, ciphertext)
+
 
 def decryptBytesWithAes(filename, key):
     file_in = open(filename, "rb")

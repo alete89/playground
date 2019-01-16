@@ -2,6 +2,7 @@ import repoUsuarios as repo
 from Usuario import Usuario
 import RSAKeyHandle as rsa
 import AesPlayground as aes
+from Crypto.Cipher import PKCS1_OAEP
 
 keysize = 1024
 
@@ -19,9 +20,19 @@ repo.agregarUsuarios(usuarios)
 # print(repo.getPubKeyFromUsername("ale"))
 
 # Ale le envía un mensaje a Pedro
-mensaje = "Un mensaje de prueba."
+mensaje = "Un mensaje de prueba.".encode("utf-8")
 destination_pubkey = repo.getPubKeyFromUsername("pedro")
 session_key = rsa.get_random_bytes(16)
 cipher_rsa = rsa.PKCS1_OAEP.new(destination_pubkey)
 enc_session_key = cipher_rsa.encrypt(session_key)  # lista para mandar a Pedro
-aes.encryptBytesWithAesToFile(mensaje, session_key, "data_para_pedro.bin")
+encrypted_data = aes.encryptBytesWithAes(mensaje, session_key) # listo para mandar a Pedro
+
+# Pedro: (tiene: enc_session_key y encrypted_data)
+pedro_private = usuarios[1].key
+cipher_rsa_pedro = PKCS1_OAEP.new(pedro_private) # hacer un getcipher en mi lib?
+session_key_pedro = cipher_rsa_pedro.decrypt(enc_session_key)
+
+data = aes.decryptBytesWithAes(encrypted_data, session_key_pedro)
+
+print(data)
+

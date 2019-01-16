@@ -33,8 +33,9 @@ def decryptBytesWithAes(nonce_tag_ciphertext, key):
 
 
 def main():
-    encryptBytesWithAesToFile(unaData, unaKey, unArchivo)
-    print(decryptBytesWithAesFromFile(unArchivo, unaKey))
+    encriptado = encryptBytesWithAes(unaData, unaKey)
+    print(encriptado)
+    print(decryptBytesWithAes(encriptado, unaKey))
 
 
 if __name__ == "__main__":

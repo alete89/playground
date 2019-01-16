@@ -24,4 +24,4 @@ destination_pubkey = repo.getPubKeyFromUsername("pedro")
 session_key = rsa.get_random_bytes(16)
 cipher_rsa = rsa.PKCS1_OAEP.new(destination_pubkey)
 enc_session_key = cipher_rsa.encrypt(session_key)  # lista para mandar a Pedro
-aes.encryptBytesWithAes(mensaje, session_key, "data_para_pedro.bin")
+aes.encryptBytesWithAesToFile(mensaje, session_key, "data_para_pedro.bin")

@@ -33,7 +33,7 @@ def exampleSender():
     enc_session_key = cipher_rsa.encrypt(session_key)
 
     # Encrypt the data with the AES session key
-    AesPlayground.encryptBytesWithAes(unTexto, session_key, "encrypted_data_aes.bin")
+    AesPlayground.encryptBytesWithAesToFile(unTexto, session_key, "encrypted_data_aes.bin")
 
     # Also export enc_session_key for the receiver
     exportKeyToFile(enc_session_key, "enc_sess_key.key")

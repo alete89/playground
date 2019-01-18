@@ -6,7 +6,8 @@ import AesPlayground
 
 unTexto = "Un mensaje de ejemplo.".encode("utf-8")
 
-def getKeyPair(size:int):
+
+def getKeyPair(size: int):
     return RSA.generate(size)
 
 
@@ -24,12 +25,16 @@ def importKeyFromFile(path, password=None):
     return RSA.import_key(encoded_key, password)
 
 
+def getNewRsaCipher(key):
+    return PKCS1_OAEP.new(key)
+
+
 def exampleSender():
     recipient_key = importKeyFromFile("public.pem")
     session_key = get_random_bytes(16)
 
     # Encrypt the session key with the public RSA key
-    cipher_rsa = PKCS1_OAEP.new(recipient_key)
+    cipher_rsa = getNewRsaCipher(recipient_key)
     enc_session_key = cipher_rsa.encrypt(session_key)
 
     # Encrypt the data with the AES session key
@@ -46,7 +51,7 @@ def exampleReceiver():
     nonce, tag, ciphertext = [file_in.read(x) for x in (16, 16, -1)]  # my_private.size_in_bytes(),
 
     # Decrypt the session key with the private RSA key
-    cipher_rsa = PKCS1_OAEP.new(my_private)
+    cipher_rsa = getNewRsaCipher(my_private)
     session_key = cipher_rsa.decrypt(enc_sess_key)
 
     # Decrypt the data with the AES session key

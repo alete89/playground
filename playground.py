@@ -3,14 +3,13 @@ from Usuario import Usuario
 import RSAKeyHandle as rsa
 import AesPlayground as aes
 
-keysize = 1024
 
 usuarios = [
-    Usuario("ale", rsa.getKeyPair(keysize)),
-    Usuario("pedro", rsa.getKeyPair(keysize)),
-    Usuario("carlos", rsa.getKeyPair(keysize)),
-    Usuario("alice", rsa.getKeyPair(keysize)),
-    Usuario("bob", rsa.getKeyPair(keysize))
+    Usuario("ale", rsa.getKeyPair(rsa.KEY_SIZE)),
+    Usuario("pedro", rsa.getKeyPair(rsa.KEY_SIZE)),
+    Usuario("carlos", rsa.getKeyPair(rsa.KEY_SIZE)),
+    Usuario("alice", rsa.getKeyPair(rsa.KEY_SIZE)),
+    Usuario("bob", rsa.getKeyPair(rsa.KEY_SIZE))
 ]
 repo.agregarUsuarios(usuarios)
 

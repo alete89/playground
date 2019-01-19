@@ -4,6 +4,7 @@ from Crypto.Cipher import AES, PKCS1_OAEP
 
 import AesPlayground
 
+KEY_SIZE = 1024
 unTexto = "Un mensaje de ejemplo.".encode("utf-8")
 
 

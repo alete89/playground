@@ -3,7 +3,7 @@ from PyQt5 import QtWidgets
 from PyQt5 import QtCore
 
 
-class MainWindow(QtWidgets.QWidget):
+class ChatWindow(QtWidgets.QWidget):
     def __init__(self):
         super().__init__()
         self.horizontalLayout_2 = QtWidgets.QHBoxLayout(self)
@@ -25,7 +25,7 @@ class MainWindow(QtWidgets.QWidget):
 
 if __name__ == "__main__":
     app = QtWidgets.QApplication(sys.argv)
-    window = MainWindow()
+    window = ChatWindow()
     window.resize(500, 480)
     window.show()
     sys.exit(app.exec_())

@@ -2,6 +2,9 @@ import sys
 from PyQt5 import QtWidgets
 from PyQt5 import QtCore
 import chatClient as chat
+from threading import Thread
+from functools import partial
+
 
 
 class ChatWindow(QtWidgets.QWidget):
@@ -22,7 +25,7 @@ class ChatWindow(QtWidgets.QWidget):
         self.horizontalLayout_2.addLayout(self.verticalLayout)
 
         # signals and slots
-        self.pushButton.clicked.connect(chat.send)
+        self.pushButton.clicked.connect(partial(chat.send,self))
 
 
 if __name__ == "__main__":
@@ -31,3 +34,5 @@ if __name__ == "__main__":
     window.resize(500, 480)
     window.show()
     sys.exit(app.exec_())
+    receive_thread = Thread(target=chat.receive(window))
+    receive_thread.start()

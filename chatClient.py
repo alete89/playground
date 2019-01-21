@@ -1,11 +1,11 @@
-import ChatWindow
+from ChatWindow import ChatWindow
 from Usuario import Usuario
 import RSAKeyHandle as rsa
 from socket import AF_INET, socket, SOCK_STREAM
 from threading import Thread
 
 
-def receive():
+def receive(windo):
     """Handles receiving of messages."""
     while True:
         try:
@@ -15,7 +15,7 @@ def receive():
             break
 
 
-def send(event=None):  # event is passed by binders.
+def send(windo, event=None):  # event is passed by binders.
     """Handles sending of messages."""
     msg = windo.lineEdit.text()
     windo.lineEdit.setText("")
@@ -27,8 +27,8 @@ def send(event=None):  # event is passed by binders.
 
 
 # ----Now comes the sockets part----
-HOST = input('Enter host: ')
-PORT = input('Enter port: ')
+HOST = "localhost" # input('Enter host: ')
+PORT = 33000 # input('Enter port: ')
 if not PORT:
     PORT = 33000
 else:
@@ -39,7 +39,3 @@ ADDR = (HOST, PORT)
 
 client_socket = socket(AF_INET, SOCK_STREAM)
 client_socket.connect(ADDR)
-
-windo = ChatWindow.ChatWindow()
-receive_thread = Thread(target=receive)
-receive_thread.start()

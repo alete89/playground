@@ -1,6 +1,7 @@
 import sys
 from PyQt5 import QtWidgets
 from PyQt5 import QtCore
+import chatClient as chat
 
 
 class ChatWindow(QtWidgets.QWidget):
@@ -21,6 +22,7 @@ class ChatWindow(QtWidgets.QWidget):
         self.horizontalLayout_2.addLayout(self.verticalLayout)
 
         # signals and slots
+        self.pushButton.clicked.connect(chat.send)
 
 
 if __name__ == "__main__":

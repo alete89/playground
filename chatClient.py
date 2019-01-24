@@ -25,10 +25,9 @@ def send(windo, event=None):  # event is passed by binders.
         quit()
 
 
-
 # ----Now comes the sockets part----
-HOST = "localhost" # input('Enter host: ')
-PORT = 33000 # input('Enter port: ')
+HOST = "localhost"  # input('Enter host: ')
+PORT = 33000  # input('Enter port: ')
 if not PORT:
     PORT = 33000
 else:

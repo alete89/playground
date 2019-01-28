@@ -7,7 +7,7 @@ from functools import partial
 
 
 class ChatWindow(QtWidgets.QWidget):
-    def __init__(self, chat):
+    def __init__(self):
         super().__init__()
         self.horizontalLayout_2 = QtWidgets.QHBoxLayout(self)
         self.verticalLayout = QtWidgets.QVBoxLayout()
@@ -24,7 +24,7 @@ class ChatWindow(QtWidgets.QWidget):
         self.horizontalLayout_2.addLayout(self.verticalLayout)
 
         # signals and slots
-        self.pushButton.clicked.connect(partial(chat.send, self))
+        #self.pushButton.clicked.connect(partial(chat.send, self))
 
 
 if __name__ == "__main__":
